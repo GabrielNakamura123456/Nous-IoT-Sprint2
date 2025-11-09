@@ -1,0 +1,22 @@
+[
+    {
+        "id": "b7dbe2fd1672ccfd",
+        "type": "function",
+        "z": "0fa63cc234a6aa88",
+        "name": "Simular sensores",
+        "func": "msg.payload = {\n    aluno: [\"Gabriel\", \"Guilherme\", \"Julio\"][Math.floor(Math.random() * 3)],\n    temperatura_corporal: (36 + Math.random() * 4).toFixed(1),  // ex: 36°C a 40°C\n    batimentos: Math.floor(60 + Math.random() * 40),            // ex: 60 a 100 bpm\n    nivel_estresse: Math.floor(Math.random() * 100),\n    estado_emocional: [\"Feliz\", \"Ansioso\", \"Cansado\", \"Tranquilo\", \"Irritado\"][Math.floor(Math.random() * 5)],\n    data: new Date().toLocaleString()\n};\n\n\nif (msg.payload.temperatura_corporal > 38.0 && msg.payload.batimentos > 90) {\n    msg.payload.alerta = \"possível tensão elevada – sugerir pausa\";\n} else {\n    msg.payload.alerta = \"estado dentro do esperado\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 280,
+        "wires": [
+            [
+                "f07ea86b6fb2f437"
+            ]
+        ]
+    }
+]
